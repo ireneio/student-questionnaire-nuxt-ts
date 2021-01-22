@@ -1,0 +1,40 @@
+html {
+  // height: 100vh;
+}
+body {
+  // min-width: $viewport-lock-breakpoint;
+  // @include viewport-lock;
+
+  // height: 100vh;
+  // overflow: auto;
+}
+.aside {
+  flex: 0 0 250px;
+  width: 250px;
+  background-color: $black;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.main {
+  flex: 1 0 0;
+}
+.body {
+  background-color: $grey1;
+  height: calc(100vh - 129px);
+  padding: 22px;
+  overflow: auto;
+  &--full {
+    background-color: $white;
+    height: calc(100vh - 54px);
+    &:before {
+      content: '';
+      display: block;
+      width: calc(100vw + 22px);
+      height: 53px;
+      margin-left: -22px;
+      margin-top: -22px;
+      background-color: $grey1;
+    }
+  }
+}

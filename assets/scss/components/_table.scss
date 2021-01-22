@@ -1,0 +1,121 @@
+.table {
+  width: 100%;
+  overflow: auto;
+  &__header {
+    background-color: $grey1;
+    color: $grey5;
+    font-size: 14px;
+    padding: 0 28px;
+  }
+  &__headerCell {
+    padding: 0 28px;
+    text-align: left;
+    border-left: 1px solid $primary;
+  }
+  &__divider {
+    height: 12px;
+    width: 100%;
+    background-color: $grey1;
+  }
+  &__row {
+    border-radius: 3px;
+    background-color: $white;
+    font-size: 12px;
+    border: 1px solid $grey1;
+    &--selected {
+      border: 1px solid $primary;
+    }
+    &--selectable {
+      cursor: pointer;
+    }
+  }
+  &__cell {
+    padding: 26px 28px;
+    text-align: left;
+    margin-bottom: 4px;
+    border-right: 1px solid $grey1;
+  }
+  &__cellCircle {
+    text-align: center;
+  }
+  &__footer {
+    display: flex;
+    margin-top: 15px;
+  }
+  &__pagination {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    font-size: 14px;
+  }
+  &__paginationBtnbox {
+    display: flex;
+    padding-top: 4px;
+  }
+  &__paginationBtn {
+    margin: 0 7px;
+    cursor: pointer;
+    &::before {
+      // width: 7px;
+      // height: 7px;
+      content: '';
+      display: block;
+      // background-color: $white;
+      border-top: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+    }
+    &--next {
+      &::before {
+        border-left: 7px solid $dark2;
+      }
+    }
+    &--prev {
+      &::before {
+        border-right: 7px solid $dark2;
+      }
+    }
+    &--disabledNext {
+      cursor: not-allowed;
+      &::before {
+        border-left: 7px solid $grey4;
+      }
+    }
+    &--disabledPrev {
+      cursor: not-allowed;
+      &::before {
+        border-right: 7px solid $grey4;
+      }
+    }
+  }
+  &__toolbar {
+    display: flex;
+  }
+}
+
+.tableBtn {
+  display: flex;
+  align-items: center;
+  margin-right: 42px;
+  color: $dark2;
+  background-color: $white;
+  font-size: 12px;
+  border: 1px solid $grey2;
+  padding: 4px 12px;
+  cursor: pointer;
+  &__icon {
+    width: 20px;
+    height: 20px;
+    background-color: $white;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin-right: 1px;
+  }
+  &--iconSent {
+    background-image: url(/icon_sent@3x.png);
+  }
+  &--iconInvite {
+    background-image: url(/iocn_invite@3x.png);
+  }
+}

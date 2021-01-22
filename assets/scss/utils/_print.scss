@@ -1,0 +1,39 @@
+@page {
+  size: A4;
+  margin: 2cm .25cm;
+}
+@media print {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .noPrint {
+    display: none;
+  }
+  
+  .breakPage {
+    page-break-after: always;
+  }
+
+  .modal {
+    page-break-inside: avoid;
+    &--fullScreen {
+      max-height: auto;
+      overflow: auto;
+    }
+    &__footer {
+      position: static;
+    }
+    &__body {
+      &--fullScreen {
+        max-height: auto;
+      }
+    }
+    &__largeBanner {
+      padding: 12px 0;
+    }
+    &__radarGraph {
+      flex: 0 0 33%;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+.simpleTable {
+    width: 100%;
+    text-align: left;
+    font-weight: 300;
+    &--small {
+      font-size: 14px;
+    }
+    &__headerCell {
+      padding: 0 16px;
+      font-weight: 400;
+    }
+    &__headerCellData {
+      display: flex;
+      align-items: center;
+    }
+    &__headerCellDataBar {
+      margin-right: 58px;
+      &--first {
+        margin-left: 12px;
+      }
+    }
+    &__divider {
+      height: 12px;
+      width: 100%;
+      background-color: transparent;
+    }
+    &__row {
+      font-size: 12px;
+      &--odd {
+        background-color: $grey1;
+      }
+      &--even {
+        background-color: $grey0;
+      }
+    }
+    &__col {
+      padding: 12px 16px;
+    }
+    &__titleRow {
+      background-color: $grey2;
+      color: #282828;
+      font-size: 12px;
+    }
+    &__titleCol {
+      padding: 8px 16px;
+    }
+  }

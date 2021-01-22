@@ -1,0 +1,284 @@
+.modal {
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  min-width: 600px;
+  border-radius: 3px;
+  background-color: $white;
+  max-height: 80vh;
+  overflow: auto;
+  &--fullScreen {
+    position: static;
+    min-height: 100vh;
+    min-width: 100vw;
+    // max-height: 100vh;
+    // overflow: hidden;
+  }
+  &--wide {
+    min-width: 1100px;
+  }
+  &--center {
+    left: 50%;
+    transform: translate(-50%, 5%);
+  }
+  &--right {
+    // right: 15px;
+    right: 0;
+    max-width: 594px;
+    min-height: 100vh;
+  }
+  &__banner {
+    display: flex;
+    margin: 0 -25px;
+    padding: 20px 22px;
+    background-color: rgba(174, 174, 174, 0.1);
+    margin-bottom: 16px;
+  }
+  &__bannerIcon {
+    width: 20px;
+    height: 20px;
+    background-image: url(/description@3x.png);
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+  &__bannerText {
+    margin-left: 8px;
+    font-size: 12px;
+  }
+  &__boxHeaderTitle {
+    font-size: 14px;
+    margin-bottom: 8px;
+    background-color: $white;
+    text-align: left;
+  }
+  &__box {
+    width: 130px;
+    &--consequtive {
+      margin-left: 16px;
+    }
+  }
+  &__boxTitle {
+    text-align: center;
+    font-size: 12px;
+    background-color: $grey2;
+    padding: 7px 30px;
+    border: 1px solid $grey2;
+  }
+  &__boxContent {
+    background-color: $white;
+    text-align: center;
+    font-size: 12px;
+    padding: 7px 30px;
+    border: 1px solid $grey2;
+  }
+  &__boxContentHighlight {
+    font-size: 25px;
+    &--success {
+      color: $success;
+    }
+    &--danger {
+      color: $danger;
+    }
+    &--warning {
+      color: $warning;
+    }
+  }
+  &__title {
+    display: flex;
+    align-items: center;
+    background-color: $primary;
+    padding: 17px 16px;
+    color: $white;
+    &--right {
+      background-color: $white;
+    }
+  }
+  &__titleText {
+    font-size: 22px;
+    &--focused {
+      color: $white;
+    }
+    &--blurred {
+      color: rgba(255, 255, 255, 0.4);
+    }
+    > span {
+      cursor: pointer;
+    }
+  }
+  &__times {
+    cursor: pointer;
+    margin-left: auto;
+    width: 21px;
+    height: 21px;
+    background-color: $primary;
+    background-image: url(/close@3x.png);
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    &--right {
+      background-color: $white;
+      background-image: url(/close_y@3x.png);
+    }
+  }
+  &__body {
+    padding: 19px 25px;
+    // max-height: 70vh;
+    overflow: auto;
+    // &--fullScreen {
+    //   max-height: 90vh;
+    // }
+  }
+  &__bodyTitle {
+    margin-left: -4px;
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  &__section {
+    padding-bottom: 28px;
+    margin-bottom: 26px;
+    border-bottom: 1px solid $grey2;
+  }
+  &__sectionTitle {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    font-size: 16px;
+    color: #282828;
+    margin-bottom: 18px;
+    &:before {
+      content: '';
+      display: block;
+      width: 2px;
+      height: 15px;
+      position: absolute;
+      left: -7px;
+      top: 6px;
+      background-color: $primary;
+    }
+  }
+  &__sectionSubtitle {
+    margin-bottom: 8px;
+    font-size: 14px;
+    &--consequtive {
+      margin-top: 43px;
+    }
+  }
+  &__sectionTitleSubText {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    color: #282828;
+    font-size: 12px;
+    &:hover {
+      color: $primary;
+    }
+    &--clickable {
+      cursor: pointer;
+    }
+  }
+  &__sectionTitleSubTextIcon {
+    width: 20px;
+    height: 20px;
+    background-image: url(/pen@3x.png);
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+  &__footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    padding: 27px 25px;
+    &--small {
+      position: static;
+      width: inherit;
+    }
+  }
+  &__footerToolbar {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+  &__footerToolbarBtn {
+    &--consequtive {
+      margin-left: 16px;
+    }
+  }
+  &__pp {
+    font-size: 12px;
+  }
+  &__graph {
+    position: relative;
+    width: 550px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+  }
+  &__graphDesc {
+    margin-left: 20px;
+  }
+  &__graphDescTitle {
+    font-size: 14px;
+    font-weight: bold;
+    &--success {
+      color: $success;
+    }
+    &--danger {
+      color: $danger;
+    }
+    &--warning {
+      color: $warning;
+    }
+  }
+  &__graphDescBody {
+    margin-top: 7px;
+    font-size: 12px;
+  }
+  &__graphNumber {
+    position: absolute;
+    top: 50%;
+    left: 65px;
+    text-align: center;
+    z-index: 10;
+    transform: translate(0%, -50%);
+    color: $success;
+    font-size: 28px;
+    font-weight: bold;
+    &--success {
+      color: $success;
+    }
+    &--danger {
+      color: $danger;
+    }
+    &--warning {
+      color: $warning;
+    }
+  }
+  &__largeBanner {
+    display: flex;
+    align-items: center;
+    padding: 36px 120px;
+  }
+  &__radarGraph {
+    flex: 0 0 50%;
+  }
+  &__radarGraphDesc {
+    flex: 0 0 50%;
+  }
+  &__radarGraphDescTitle {
+    margin-bottom: 4px;
+    &--consequtive {
+      margin-top: 40px;
+    }
+  }
+  &__radarGraphDescBody {
+    margin: 0 -16px;
+  }
+}

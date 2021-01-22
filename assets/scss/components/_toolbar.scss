@@ -1,0 +1,14 @@
+.toolbar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 34px;
+    &__btn {
+      margin-right: 8px;
+    }
+    &__tip {
+      margin-left: auto;
+    }
+    &__search {
+      margin-left: 17px;
+    }
+  }

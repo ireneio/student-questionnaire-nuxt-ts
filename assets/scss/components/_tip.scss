@@ -1,0 +1,18 @@
+.tip {
+  display: flex;
+  align-items: center;
+  color: $dark2;
+  font-size: 12px;
+  &__icon {
+    width: 20px;
+    height: 20px;
+    background-image: url(/description@3x.png);
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  &__text {
+    margin-left: 4px;
+    color: $grey5;
+  }
+}

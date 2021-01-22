@@ -1,0 +1,33 @@
+.circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #000;
+  border: 1px solid #000;
+  &--red {
+    background-color: $danger;
+    border: 1px solid $danger;
+  }
+  &--green {
+      background-color: $success;
+      border: 1px solid $success;
+  }
+  &--yellow {
+      background-color: $danger;
+      border: 1px solid $danger;
+  }
+  &--white {
+      background-color: $white;
+      border: 1px solid $grey3;
+  }
+}
+
+.report {
+  width: 18px;
+  height: 18px;
+  background-color: $white;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-image: url(/iocn_paper_b@3x.png);
+}

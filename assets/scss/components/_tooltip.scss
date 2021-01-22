@@ -1,0 +1,61 @@
+.tooltip {
+  position: absolute;
+  left: -46px;
+  z-index: 2;
+  display: flex;
+  width: 250px;
+  height: 40px;
+  background-image: url(/tips_description@3x.png);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  padding: 14px;
+  cursor: initial;
+  &__parent {
+    position: relative;
+  }
+  &__data {
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+    &--consequtive {
+      margin-left: 10px;
+    }
+  }
+  &__dataCircle {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: $white;
+    border: 1px solid transparent;
+    &--default {
+      border: 1px solid $grey2;
+    }
+    &--danger {
+      background: $danger;
+    }
+    &--warning {
+      background: $warning;
+    }
+    &--success {
+      background: $success;
+    }
+    &--info {
+      background: $info;
+    }
+  }
+  &__dataIcon {
+    width: 16px;
+    height: 16px;
+    background-image: url(/icon_paper_a@3x.png);
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  &__dataText {
+    margin-left: 4px;
+    color: $grey5;
+    font-size: 12px;
+    font-weight: 100;
+  }
+}

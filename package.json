@@ -1,0 +1,42 @@
+{
+  "name": "student-app-nuxt",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NUXT_ENV_API_URL=https://bg-api.f048f36cd9de4dccae74.southeastasia.aksapp.io/API/v2 nuxt-ts",
+    "build": "nuxt-ts build",
+    "start": "nuxt-ts start",
+    "generate": "nuxt-ts generate",
+    "test": "jest",
+    "docker:dev": "bash ./docker-build-run.sh",
+    "docker:hub": "bash ./docker-build-push.sh",
+    "azure": "bash ./azure-deploy.sh"
+  },
+  "dependencies": {
+    "@nuxt/typescript-runtime": "^2.0.1",
+    "@nuxtjs/axios": "^5.12.5",
+    "@nuxtjs/pwa": "^3.3.4",
+    "core-js": "^3.8.2",
+    "nuxt": "^2.14.12",
+    "axios": "^0.20.0",
+    "vuex-module-decorators": "^1.0.1",
+    "nuxt-property-decorator": "^2.8.3",
+    "cookie-universal-nuxt": "^2.1.4",
+    "cross-env": "^7.0.3",
+    "vee-validate": "^3.4.0",
+    "node-sass": "^4.14.1"
+  },
+  "devDependencies": {
+    "@nuxt/types": "^2.14.12",
+    "@nuxt/typescript-build": "^2.0.4",
+    "@vue/test-utils": "^1.1.2",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.4.4",
+    "vue-jest": "^3.0.4",
+    "sass-loader": "^7.1.0",
+    "postcss-loader": "^4.0.4",
+    "webpack-bundle-analyzer": "^3.9.0"
+  }
+}

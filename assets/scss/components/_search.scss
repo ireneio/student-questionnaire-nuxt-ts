@@ -1,0 +1,32 @@
+.search {
+    display: flex;
+    border: none;
+    border-radius: 3px;
+    background-color: $white;
+    &__input {
+      background-color: $white;
+      padding: 11px 10px;
+      border: none;
+      border-right: 1px solid $grey2;
+      font-size: 14px;
+      &:focus {
+        outline: 1px solid $grey2;
+        border-color: transparent;
+      }
+    }
+    &__btn {
+      display: flex;
+      align-items: center;
+      padding: 7px;
+      cursor: pointer;
+    }
+    &__btnIcon {
+      width: 30px;
+      height: 30px;
+      background-color: $white;
+      background-image: url(/search@3x.png);
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+  }
