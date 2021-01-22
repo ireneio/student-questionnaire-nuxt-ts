@@ -88,20 +88,11 @@
           </div>
         </div>
       </div>
-      <div class="options__wrapper bottomWrapper">
+      <div class="bottomWrapper">
         <div class="progBar">
           <div class="progBar__bar">
-            <!-- <v-progress-linear
-              style="border-radius: 15px;"
-              color="#e2a638"
-              height="13"
-              :value="progress"
-              striped
-              rounded
-            >
-            </v-progress-linear> -->
+            <div class="progBar__barBg" :style="{ width: progress + '%' }"></div>
           </div>
-          <span class="progBar__number">{{ isNaN(parseInt(progress)) ? 0 : parseInt(progress) }}%</span>
         </div>
       </div>
     </div>
@@ -124,7 +115,10 @@ export default class f2eIndex extends Vue {
   }
 
   private get progress(): number {
-    return ((this.currentQuestion + 1) / this.questions.length) * 100
+    if(this.questions.length) {
+      return ((this.currentQuestion + 1) / this.questions.length) * 100
+    }
+    return 33
   }
 
   private expiration: Date | null = null
@@ -301,7 +295,6 @@ export default class f2eIndex extends Vue {
   min-width: 100vw;
   height: 100vh;
   padding: 32px 16px;
-  // margin-top: 16px;
   background-image: url('/background-index.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -317,8 +310,10 @@ export default class f2eIndex extends Vue {
     border-radius: 5px;
     text-align: center;
     padding: 10px 0px;
+    border: 2px solid $grey2;
     &--selected {
       background-color: $primary;
+      border: 2px solid $primary;
       color: $white;
     }
   }
@@ -351,7 +346,6 @@ export default class f2eIndex extends Vue {
   right: 16px;
 }
 .topWrapper {
-  // margin-top: 26px;
   background-color: rgba($color: $grey1, $alpha: .75);
   color: $dark3;
 }
@@ -374,11 +368,11 @@ export default class f2eIndex extends Vue {
     background-position: center center;
   }
   &__triangleL {
-    left: 71px;
+    left: 67px;
     background-image: url(/talkbox_corner_l.svg);
   }
   &__triangleR {
-    right: 0px;
+    right: 39px;
     background-image: url(/talkbox_corner_r.svg);
   }
   &__pfp {
@@ -414,9 +408,9 @@ export default class f2eIndex extends Vue {
   }
 }
 .response {
-  flex: 0 0 20%;
+  flex: 0 0 12%;
   margin-left: auto;
-  margin-right: 13px;
+  margin-right: 52px;
   text-align: center;
   color: $primary;
   font-size: 17px;
@@ -425,15 +419,19 @@ export default class f2eIndex extends Vue {
   margin-top: 28px;
   display: flex;
   align-items: center;
-  &__number {
-    flex: 0 0 10%;
-    position: absolute;
-    right: 0;
-    color: $grey1;
-  }
   &__bar {
-    flex: 0 0 88%;
+    flex: 0 0 100%;
     margin-top: 2px;
+    border-radius: 12px;
+    background-color: $grey1;
+    height: 16px;
+    box-shadow: 2px 3px 4px rgba($color: $black, $alpha: .3);
+    &Bg {
+      height: 16px;
+      background-color: $primary;
+      border-radius: 12px;
+      transition: width .3s;
+    }
   }
 }
 </style>

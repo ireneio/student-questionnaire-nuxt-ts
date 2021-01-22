@@ -19,17 +19,15 @@
         <div class="privacy__btn privacy__btn--closed" @click="handleReadPrivacy" v-show="!privacyOpened">
           {{ i18nTarget('C0103') || 'privacy policy' }}
         </div>
-        <div class="privacy__checkbox">
+        <div class="privacy__checkbox" v-show="!privacyOpened">
           <label class="checkbox" for="privacy" :class="{ 'checkbox--checked': privacy }">
             <input type="checkbox" v-model="privacy" id="privacy">
           </label>
           <label class="privacy__checkboxText" for="privacy">{{ i18nTarget('C0102') || 'I agree to the' }} {{ i18nTarget('C0103') || 'privacy policy' }}</label>
         </div>
       </section>
-      <div class="buttonBox">
-        <div class="line line3">
-          <button @click="handleStart" class="button" :class="{ 'button--disabled': !privacy || clicked === 'invalid' }">{{ i18nTarget('C0104') || 'START' }}</button>
-        </div>
+      <div class="buttonBox" v-show="!privacyOpened">
+        <button @click="handleStart" class="button" :class="{ 'button--disabled': !privacy }">{{ i18nTarget('C0104') || 'START' }}</button>
       </div>
       <div class="privacyBox" v-show="privacyOpened">
         <div class="privacyBox__banner privacy__btn privacy__btn--opened" @click="handleClosePrivacy">
@@ -52,9 +50,7 @@
           <label class="privacy__checkboxText" for="privacy">{{ i18nTarget('C0102') || 'I agree to the' }} {{ i18nTarget('C0103') || 'privacy policy' }}</label>
         </div>
         <div class="buttonBox privacyBox__btnBox">
-          <div class="line line3">
-            <button @click="handleStart" class="button" :class="{ 'button--disabled': !privacy || clicked === 'invalid' }">{{ i18nTarget('C0104') || 'START' }}</button>
-          </div>
+          <button @click="handleStart" class="button" :class="{ 'button--disabled': !privacy || clicked === 'invalid' }">{{ i18nTarget('C0104') || 'START' }}</button>
         </div>
       </div>
     </div>
@@ -86,10 +82,10 @@ export default class f2eLanding extends Vue {
     if (this.privacy) {
       if (!this.clicked) {
         this.clicked = true
-        // this.loading = true
+        this.loading = true
         this.timer = null
         this.timer = setTimeout(() => {
-        // this.loading = false
+        this.loading = false
           try {
             const key : string = this.$route.query.InvitationKey.toString()
             if (key === 'undefined' || key === '') {
@@ -105,7 +101,7 @@ export default class f2eLanding extends Vue {
               query: { type: 'enabled' } })
           } catch (e) {
             this.clicked = 'invalid'
-            this.$router.push({ name: 'f2e-error', params: { statusCode: 'Required Key Missing' }, query: { type: 'success' } })
+            // this.$router.push({ name: 'f2e-error', params: { statusCode: 'Required Key Missing' }, query: { type: 'success' } })
           }
         }, 800)
       } else {
@@ -133,6 +129,7 @@ export default class f2eLanding extends Vue {
   private handleReadPrivacy($event: Event): void {
     eventStopDefault($event)
     this.privacyOpened = true
+    window.scrollTo(0, 0)
   }
 
   private handleClosePrivacy(): void {
@@ -202,7 +199,7 @@ export default class f2eLanding extends Vue {
   }
 
   private async created() {
-    // await this.initAssessment()
+    await this.initAssessment()
   }
 }
 </script>
@@ -211,19 +208,18 @@ export default class f2eLanding extends Vue {
 @import '../../assets/scss/utils/_variables.scss';
 
 .wrapper {
-  // position: relative;
-  min-height: 100vh;
+  height: calc(100vh - 42px);
+  overflow: hidden;
   min-width: 100vw;
-  // padding-top: 348px;
-  padding-top: 121px;
-  background-image: url(/bg@3xlanding.png);
+  padding-top: 42px;
+  background-image: url(/background-index.jpg);
   background-size: cover;
   background-repeat: no-repeat;
 }
 .logo {
   width: 258px;
   height: 65px;
-  background-image: url(/lasso_logo_white@3x.png);
+  background-image: url(/logo_horizontal.jpg);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -247,32 +243,6 @@ export default class f2eLanding extends Vue {
     margin-bottom: 53px;
     color: $black;
   }
-}
-.line {
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  width: 100vw;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-.line1 {
-  background-image: url(/line_a.svg);
-  height: 84px;
-}
-.line2 {
-  background-image: url(/line_b.svg);
-  height: 38px;
-}
-.line3 {
-  position: relative;
-  z-index: 2;
-  // margin-bottom: 69px;
-  background-image: url(/line_c@3x.png);
-  height: 39px;
-  text-align: center;
 }
 .prologue {
   margin-top: 120px;
@@ -321,7 +291,7 @@ export default class f2eLanding extends Vue {
 .loading {
   height: 100vh;
   overflow: hidden;
-  background-color: #fff;
+  background-color: $white;
   background-image: url(/loading@3x.png);
   width: 100vw;
   height: 100vh;
@@ -330,18 +300,18 @@ export default class f2eLanding extends Vue {
   background-position: center center;
 }
 .privacy {
-  // background-image: linear-gradient(to bottom, #ffffff 40%, rgba(237, 237, 237) 100%);
   margin-top: 40px;
   &__text {
     padding: 0 45px;
     padding-top: 45px;
     margin-bottom: 40px;
     font-size: 17px;
+    color: $dark3;
   }
   &__checkbox {
-    padding: 16px 45px 0 45px;
+    padding-top: 30px;
     width: 100vw;
-    background-color: #fff;
+    background-color: $white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -351,7 +321,7 @@ export default class f2eLanding extends Vue {
     margin-left: 5px;
   }
   &__highlight {
-    color: #e2a638;
+    color: $primary;
   }
   &__btn {
     display: flex;
@@ -370,7 +340,7 @@ export default class f2eLanding extends Vue {
         border-left: 4px solid transparent;
         border-top: 4px solid transparent;
         border-right: 4px solid transparent;
-        border-bottom: 4px solid #393939;
+        border-bottom: 4px solid $dark3;
      }
     }
     &--opened {
@@ -381,22 +351,24 @@ export default class f2eLanding extends Vue {
         border-left: 4px solid transparent;
         border-bottom: 4px solid transparent;
         border-right: 4px solid transparent;
-        border-top: 4px solid #393939;
+        border-top: 4px solid $dark3;
      }
     }
   }
 }
 .button {
-  background-color: #e2a638;
+  background-color: $primary;
   opacity: 1 !important;
   width: 150px;
   font-size: 21px;
-  color: #fff;
+  color: $white;
   padding: 12px 43px;
   border-radius: 31px;
   letter-spacing: 0.42px;
+  border: none;
+  cursor: pointer;
   &--disabled {
-    background-color: #e0e0e0;
+    background-color: $grey3;
     cursor: not-allowed;
   }
 }
@@ -405,36 +377,38 @@ export default class f2eLanding extends Vue {
   display: block;
   width: 16px;
   height: 16px;
-  background-color: #fff;
+  background-color: $white;
   border-radius: 3px;
-  border: 1px solid #e2a638;
+  border: 1px solid $primary;
   > input {
     display: none;
   }
   &--checked {
-    background-color: #e2a638;
+    background-color: $primary;
     &:before {
       display: block;
       content: '';
       width: 2px;
       height: 6px;
-      background-color: #fff;
-      transform: rotate(-40deg) translateX(0px) translateY(6px);
+      background-color: $white;
+      transform: rotate(-40deg) translateX(0px) translateY(7px);
     }
     &:after {
       display: block;
       content: '';
       width: 2px;
       height: 9px;
-      background-color: #fff;
-      transform: rotate(40deg) translateX(3px) translateY(-9px);
+      background-color: $white;
+      transform: rotate(40deg) translateX(4px) translateY(-8px);
     }
   }
 }
 .buttonBox {
-  padding-top: 44px;
-  padding-bottom: 44px;
-  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0;
+  background-color: $white;
 }
 .privacyBox {
   position: fixed;
@@ -443,25 +417,27 @@ export default class f2eLanding extends Vue {
   z-index: 100;
   width: 100vw;
   height: 100vh;
+  background-color: rgba($color: $dark3, $alpha: .35);
   overflow: auto;
-  // background-image: linear-gradient(to bottom, #ffffff 17%, #ededed 100%);
   &__banner {
-    padding: 15px 0;
-    color: #393939;
+    padding: 13px 0;
+    color: $dark3;
     margin-bottom: 0;
+    cursor: pointer;
   }
   &__text {
-    height: 75vh;
+    height: 55vh;
     overflow: auto;
-    color: #fff;
-    background-color: #5f5f5f;
+    color: $white;
+    background-color: $white;
     margin: 0 20px;
     padding: 12px;
     border-radius: 4px;
     margin-bottom: 12px;
+    box-shadow: 2px 3px 4px rgba($color: $black, $alpha: .3);
   }
   &__secTitle {
-    color: #e2a638;
+    color: $primary;
     font-size: 17px;
     margin-top: 14px;
     margin-bottom: 12px;
