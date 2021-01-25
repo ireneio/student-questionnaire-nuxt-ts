@@ -65,3 +65,10 @@ export namespace TablePage {
     CATId: number
   }
 }
+export interface TabItem {
+  label: string,
+  url: string,
+  type: string,
+  subtabs: Array<SideMenuItem>,
+  id: number
+}

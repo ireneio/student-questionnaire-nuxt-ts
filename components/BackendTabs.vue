@@ -24,31 +24,12 @@ import { SideMenuItem } from '~/types'
 
 @Component
 export default class BackendTabs extends Vue {
-   @Prop({ default: [] }) readonly menuData!: Array<SideMenuItem>
+  @Prop({ default: [] }) readonly menuData!: Array<SideMenuItem>
 
-  private currentTab: string = '1'
+  @Prop() readonly currentTab!: SideMenuItem
 
   private handleUpdateTab(label: string, url: string, type: string, subtabs: Array<SideMenuItem>, id: Number) : void {
-      if(type === 'primary') {
-        this.currentTab = id.toString()
-        localStorage.setItem('tab', id.toString())
-        if(url !== '') {
-          this.$router.push(url)
-        }
-      } else if (type === 'sub') {
-        if(url !== '') {
-          this.$router.push(url)
-        }
-      }
-  }
-
-  private created() {
-    const tab = localStorage.getItem('tab')
-    if(tab) {
-      this.currentTab = tab
-    } else {
-      this.currentTab = '1'
-    }
+    this.$emit('update-tab', { label, url, type, subtabs, id })
   }
 }
 </script>
