@@ -40,8 +40,6 @@ export default class BackendTabs extends Vue {
 .logo {
   width: 160PX;
   height: 78px;
-  // margin-top: 10px;
-  // margin-bottom: 18px;
   background-image: url(/logo_horizontal_invert.jpg);
   background-size: cover;
   background-position: center center;

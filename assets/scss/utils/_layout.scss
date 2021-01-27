@@ -1,17 +1,7 @@
-html {
-  // height: 100vh;
-}
-body {
-  // min-width: $viewport-lock-breakpoint;
-  // @include viewport-lock;
-
-  // height: 100vh;
-  // overflow: auto;
-}
 .aside {
   flex: 0 0 250px;
   width: 250px;
-  background-color: $black;
+  background-color: #141414;
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
