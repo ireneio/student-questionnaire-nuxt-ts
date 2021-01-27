@@ -1,4 +1,4 @@
-import { NuxtAxiosInstance } from '@nuxtjs/axios'
+import { AxiosOptions, NuxtAxiosInstance } from '@nuxtjs/axios'
 import { AxiosInstance } from 'axios'
 
 const timeout = Number(process.env.TIMEOUT_LIMIT) || 20000
@@ -10,6 +10,7 @@ let $authVerify: AxiosInstance
 
 export function initializeAxios(axiosInstance: NuxtAxiosInstance) {
   $nuxtAxiosInstance = axiosInstance
+  // @ts-ignore
   $axios = $nuxtAxiosInstance.create({
     headers: {
       'Time-Zone': 8,
@@ -20,6 +21,7 @@ export function initializeAxios(axiosInstance: NuxtAxiosInstance) {
     timeout
   })
 
+  // @ts-ignore
   $auth = $nuxtAxiosInstance.create({
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -28,6 +30,7 @@ export function initializeAxios(axiosInstance: NuxtAxiosInstance) {
     timeout
   })
 
+  // @ts-ignore
   $authVerify = $nuxtAxiosInstance.create({
     headers: {
       Authorization: ''

@@ -398,7 +398,7 @@ import { TablePage } from '~/types/index'
   }
 })
 export default class RecruitmentIndex extends Vue {
-  private checked: Array<string> = []
+  private checked: Array<string | number> = []
 
   private tableHeaders: Array<string> = [
     'checkbox',
@@ -455,7 +455,7 @@ export default class RecruitmentIndex extends Vue {
     DDI: false
   }
 
-  private subjectId: string = ''
+  private subjectId: string | number = ''
 
   private performanceList: Array<any> = []
 
@@ -474,7 +474,7 @@ export default class RecruitmentIndex extends Vue {
         const res = this.tableData.find((item: TablePage.TableItem) => item.SubjectId === this.subjectId)
         return [ res !== undefined ? res : placeholder ]
       } else if(this.selectMode === 1) {
-        return this.checked.map((item: string) => {
+        return this.checked.map((item: string | number) => {
           return this.tableData.find(tableItem => tableItem.SubjectId === item)
         }) || []
       }
@@ -569,7 +569,7 @@ export default class RecruitmentIndex extends Vue {
     }
   }
 
-  private async sendGetParametersRequest(type: number, code: number): Promise<AxiosResponse> {
+  private async sendGetParametersRequest(type: string, code: string): Promise<AxiosResponse> {
     try {
       const requestBody = {
               Conditions: [
@@ -587,7 +587,7 @@ export default class RecruitmentIndex extends Vue {
     }
   }
 
-  private async sendCreateAssessmentRequest(list: Array<any>, type?: string): Promise<AxiosResponse> {
+  private async sendCreateAssessmentRequest(list: Array<any> | string, type?: string): Promise<AxiosResponse> {
     let requestBody
     try {
       if(type === 'invitation') {

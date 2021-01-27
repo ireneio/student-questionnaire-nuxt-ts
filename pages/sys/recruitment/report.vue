@@ -1,7 +1,7 @@
 <template>
   <div class="modal--fullScreen" id="print">
     <div class="modal__title noPrint">
-      <div class="modal__titleText"> 
+      <div class="modal__titleText">
         <span @click="modalView = 0" :class="{ 'modal__titleText--focused': modalView === 0, 'modal__titleText--blurred': modalView === 1 }">
           新增人員</span>&nbsp;&nbsp;|&nbsp;&nbsp;
         <span @click="modalView = 1" :class="{ 'modal__titleText--focused': modalView === 1, 'modal__titleText--blurred': modalView === 0 }">
@@ -51,20 +51,20 @@
                 </tr>
               </tbody>
             </table>
-          </div>         
+          </div>
         </div>
       </div>
       <div class="modal__section model__section--consequtive">
         <div class="modal__sectionTitle">報告可信度指標</div>
         <div class="bigBoxWraper">
           <div>
-            <div class="categoryProgBar__textTitle">報告可性度: 
-              <span class="categoryProgBar__text categoryProgBar__text--success" 
+            <div class="categoryProgBar__textTitle">報告可性度:
+              <span class="categoryProgBar__text categoryProgBar__text--success"
                     :style="{ color: pageData.Subjects.length ? parseInt(pageData.CurrentProfessionCompetency.Competency) > 80 ? '#33a588' : parseInt(pageData.CurrentProfessionCompetency.Competency) >= 60 ? '#f5b537' : '#db5a5a' : '#db5a5a' }">{{ pageData.Subjects.length ? parseInt(pageData.CurrentProfessionCompetency.Competency) > 80 ? '高於平均值' : parseInt(pageData.CurrentProfessionCompetency.Competency) >= 60 ? '平均值' : '低於平均值' : '低於平均值'}}
               </span>
             </div>
-            <div 
-              class="categoryProgBar categoryProgBar__report noPrint" 
+            <div
+              class="categoryProgBar categoryProgBar__report noPrint"
               :style="{ 'background-color': pageData.Subjects.length ? parseInt(pageData.CurrentProfessionCompetency.Competency) > 80 ? '#33a588' : parseInt(pageData.CurrentProfessionCompetency.Competency) >= 60 ? '#f5b537' : '#db5a5a' : '#db5a5a' }">
               <div class="categoryProgBar__before" :style="{ width: `${pageData.Subjects.length ? (1 - parseInt(pageData.CurrentProfessionCompetency.Competency) / 217).toString() : '200'}` + 'px'}"></div>
             </div>
@@ -163,7 +163,7 @@
                 <span class="modal__boxContentHighlight" :class="`modal__boxContentHighlight--${pageData.TopProfessionCompetency.length ? parseInt(pageData.TopProfessionCompetency[3].Competency) > 80 ? 'success' : parseInt(pageData.TopProfessionCompetency[3].Competency) >= 60 ? 'warning' : 'danger' : 'danger' }`">{{ pageData.TopProfessionCompetency.length ? parseInt(pageData.TopProfessionCompetency[3].Competency) : 3 }}</span>分
               </div>
             </div>
-          </div>        
+          </div>
           <div class="modal__box modal__box--consequtive">
             <div class="modal__boxTitle">{{ pageData.TopProfessionCompetency.length ? pageData.TopProfessionCompetency[4].Profession : 'Placeholder' }}</div>
             <div class="modal__boxContent">
@@ -206,7 +206,7 @@
                 <span class="modal__boxContentHighlight" :class="`modal__boxContentHighlight--${pageData.BottomProfessionCompetency.length ? parseInt(pageData.BottomProfessionCompetency[3].Competency) > 80 ? 'success' : parseInt(pageData.BottomProfessionCompetency[3].Competency) >= 60 ? 'warning' : 'danger' : 'danger' }`">{{ pageData.BottomProfessionCompetency.length ? parseInt(pageData.BottomProfessionCompetency[3].Competency) : 3 }}</span>分
               </div>
             </div>
-          </div>        
+          </div>
           <div class="modal__box modal__box--consequtive">
             <div class="modal__boxTitle">{{ pageData.BottomProfessionCompetency.length ? pageData.BottomProfessionCompetency[4].Profession : 'Placeholder' }}</div>
             <div class="modal__boxContent">
@@ -436,7 +436,7 @@
                       <div class="simpleTable__headerCellDataBar">3</div>
                       <div class="simpleTable__headerCellDataBar">4</div>
                       <div class="simpleTable__headerCellDataBar">5</div>
-                    </div>                     
+                    </div>
                   </th>
                   <th class="simpleTable__headerCell"></th>
                   <th class="simpleTable__headerCell">職能說明</th>
@@ -509,7 +509,7 @@ export default {
         if(Object.keys(this.pageData.CurrentProfessionCompetency).length > 0) {
           let str = ''
           this.pageData.CurrentProfessionCompetency.NineBox[index].Dimensions.forEach(item => {
-            str += item + '<br />' 
+            str += item + '<br />'
           })
           return str
         } else {
@@ -536,7 +536,7 @@ export default {
       }, '')
     },
     drawChart() {
-      const chart = new CanvasJS.Chart("graph", 
+      const chart = new CanvasJS.Chart("graph",
       {
         animationEnabled: true,
         data: [{
